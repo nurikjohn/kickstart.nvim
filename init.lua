@@ -412,26 +412,12 @@ require('lazy').setup({
       -- You don't need to set any of these options.
       -- IMPORTANT!: this is only a showcase of how you can set default options!
       require('telescope').setup {
-        extensions = {
-          file_browser = {
-            -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
-            mappings = {
-              ['i'] = {
-                -- your custom insert mode mappings
-              },
-              ['n'] = {
-                -- your custom normal mode mappings
-              },
-            },
-          },
-        },
+        extensions = {},
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
-      pcall(require('telescope').load_extension, 'file_browser')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -445,8 +431,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-
-      vim.keymap.set('n', '<leader>b', require('telescope').extensions.file_browser.file_browser, { desc = '[B]rowse Files' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -961,12 +945,12 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
